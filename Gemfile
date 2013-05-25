@@ -6,6 +6,7 @@ gem 'bootstrap-sass', '2.1'
 group :development, :test do
   gem 'sqlite3', '1.3.5'
   gem 'rspec-rails', '2.11.0'
+  gem 'guard-rspec', '1.2.1'
 end
 
 # Gems used only for assets and not required
@@ -20,6 +21,9 @@ gem 'jquery-rails', '2.0.2'
 
 group :test do
   gem 'capybara', '1.1.2'
+  gem 'rb-fchange', '0.0.5'			# needed by guard-rspec
+  gem 'rb-notifu', '0.0.4'			# needed by guard-rspec
+  gem 'win32console', '1.3.0'		# needed by guard-rspec
 end
 
 group :production do
