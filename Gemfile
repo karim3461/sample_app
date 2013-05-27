@@ -19,6 +19,10 @@ end
 
 gem 'jquery-rails', '2.0.2'
 
+group :development do
+  gem 'annotate', '2.5.0'       # Optional (to annotate the Rails models)
+end
+
 group :test do
   gem 'capybara', '1.1.2'
   gem 'rb-fchange', '0.0.5'			# needed by guard-rspec
