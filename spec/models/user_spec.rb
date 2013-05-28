@@ -25,7 +25,7 @@ describe User do
   it { should respond_to(:password_digest) }
   it { should respond_to(:password) }
   it { should respond_to(:password_confirmation) }
-
+  
   it { should respond_to(:authenticate) }
 
   it { should be_valid }
@@ -75,11 +75,18 @@ describe User do
     it { should_not be_valid }
   end
 
-  describe "when password is not present" do
-    before do
-      @user = User.new(name: "Example User", email: "user@example.com", 
-                      password: " ", password_confirmation: " ")
+  describe "email address with mixed case" do
+    let(:mixed_case_email) { "Foo@ExAMPle.CoM" }
+
+    it "should be saved as all lower-case" do
+      @user.email = mixed_case_email
+      @user.save
+      @user.reload.email.should == mixed_case_email.downcase
     end
+  end
+
+  describe "when password is not present" do
+    before { @user.password = @user.password_confirmation = " " }
     it { should_not be_valid }
   end
 
@@ -89,10 +96,7 @@ describe User do
   end
 
   describe "when password confirmation is nil" do
-    before do
-      @user = User.new(name: "Michael Hartl", email: "mhartl@example.com",
-                      password: "foobar", password_confirmation: nil)
-    end
+    before { @user.password_confirmation = nil }
     it { should_not be_valid }
   end
 
