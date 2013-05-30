@@ -29,6 +29,7 @@ group :test do
   gem 'rb-fchange', '0.0.5'			# needed by guard-rspec
   gem 'rb-notifu', '0.0.4'			# needed by guard-rspec
   gem 'win32console', '1.3.0'		# needed by guard-rspec
+  gem 'factory_girl_rails', '4.1.0'
 end
 
 group :production do
