@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
-  before_filter :signed_in_user, only: [:index, :edit, :update, :destroy]
+  #before_filter :signed_in_user, only: [:index, :edit, :update, :destroy]
+  # KEG: prevent non signed in from seeing users profiles
+  before_filter :signed_in_user, only: [:index, :show, :edit, :update, :destroy]
   before_filter :correct_user,   only: [:edit, :update]
   before_filter :admin_user,     only: :destroy
 
